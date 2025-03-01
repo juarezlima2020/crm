@@ -1,0 +1,218 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 15/01/2025 às 15:28
+-- Versão do servidor: 10.11.10-MariaDB
+-- Versão do PHP: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `u449585788_crm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `BANCO`
+--
+
+CREATE TABLE `BANCO` (
+  `ID_BANCO` int(11) NOT NULL,
+  `ID_PRODUTO` int(11) NOT NULL,
+  `ID_EMPRESA` int(11) NOT NULL,
+  `VALIDADE` date NOT NULL,
+  `TIPO_LICENCA` int(11) NOT NULL COMMENT '0 - Vitalicia\r\n1 - Periodo',
+  `ULTIMA_VERIFICACAO` datetime DEFAULT NULL,
+  `DESCRICAO` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `BANCO`
+--
+
+INSERT INTO `BANCO` (`ID_BANCO`, `ID_PRODUTO`, `ID_EMPRESA`, `VALIDADE`, `TIPO_LICENCA`, `ULTIMA_VERIFICACAO`, `DESCRICAO`) VALUES
+(1, 1, 2, '2030-05-05', 1, '2025-01-15 09:08:29', 'DIKAS CENTRAL'),
+(2, 1, 2, '2030-05-15', 0, '2025-01-15 09:31:27', 'DIKAS SAO VICENTE'),
+(3, 1, 2, '2030-05-09', 0, '2025-01-15 08:58:31', 'DIKAS PRAIA GRANDE'),
+(4, 1, 2, '2030-05-09', 0, '2025-01-15 09:24:14', 'DIKAS LOJAO'),
+(5, 1, 3, '2024-12-02', 1, '2024-11-22 10:52:33', 'CLAUSS MODAS'),
+(6, 1, 5, '2030-05-10', 0, '2024-05-15 18:41:59', 'ARTE COUROS Fiscal'),
+(7, 1, 5, '2030-05-09', 0, '2024-05-28 11:32:23', 'ARTE COUROS IN'),
+(8, 1, 6, '2030-05-09', 0, '2024-05-28 11:37:51', 'PINGUINHO DE GENTE'),
+(9, 1, 9, '2030-05-09', 0, '2024-05-28 11:39:54', 'FLABO LJ 1 SAO ROQUE'),
+(10, 1, 9, '2030-05-09', 0, '2024-05-28 11:40:59', 'FLABO LJ 2 ARACARIGUAMA'),
+(11, 1, 9, '2030-05-09', 0, '2024-05-28 11:41:47', 'FLABO LJ 3 MAIRINQUE'),
+(12, 1, 4, '2030-05-09', 0, '2024-09-18 08:03:30', 'JAIR CALCADOS'),
+(13, 1, 1, '2024-07-31', 1, '2024-08-08 10:19:13', 'Ideal Brasil'),
+(14, 1, 10, '2030-05-09', 0, '2024-05-28 11:48:27', 'LINDA HAIR'),
+(15, 1, 11, '2030-05-09', 0, '2024-05-28 11:49:02', 'MACKENNA'),
+(16, 1, 12, '2030-05-09', 0, '2025-01-13 16:12:17', 'RT9'),
+(17, 1, 13, '2030-05-09', 0, '2024-05-28 11:49:52', 'SO ROUPAS'),
+(18, 1, 14, '2030-05-09', 0, '2024-05-28 11:51:57', 'FORTALEZA LJ 1 CENTRAL'),
+(19, 1, 14, '2030-05-09', 0, '2024-05-28 11:52:28', 'FORTALEZA LJ 3 BARAO'),
+(20, 1, 14, '2030-05-09', 0, '2024-05-28 11:54:10', 'FORTALEZA LJ 13 SAL E LUZ'),
+(21, 1, 2, '2030-01-01', 1, '2025-01-15 09:24:53', 'Dikas Rio Branco'),
+(30, 1, 20, '2024-09-01', 0, '2024-07-18 11:28:07', 'Passaredo Central'),
+(31, 1, 20, '2024-09-01', 0, '2024-07-30 16:51:40', 'Passaredo C Costa');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `PESSOA`
+--
+
+CREATE TABLE `PESSOA` (
+  `ID_PESSOA` int(11) NOT NULL,
+  `ID_TIPO` int(11) NOT NULL,
+  `NOME_FANTASIA` varchar(100) DEFAULT NULL,
+  `RAZ_SOC` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `PESSOA`
+--
+
+INSERT INTO `PESSOA` (`ID_PESSOA`, `ID_TIPO`, `NOME_FANTASIA`, `RAZ_SOC`) VALUES
+(1, 1, 'IDEAL BRASIL', 'IDEAL BRASIL'),
+(2, 2, 'DIKAS', 'DIKAS'),
+(3, 2, 'CLAUSS MODAS', 'CLAUSS MODAS'),
+(4, 2, 'JAIR CALCADOS', 'JAIR CALCADOS'),
+(5, 2, 'ARTE COUROS', 'ARTE COUROS'),
+(6, 2, 'PINGUINHO DE GENTE', 'PINGUINHO DE GENTE'),
+(9, 2, 'FLABO VET SAO ROQUE', 'FLABO VET SAO ROQUE'),
+(10, 2, 'LINDA HAIR', 'LINDA HAIR'),
+(11, 2, 'MACKENNA', 'MACKENNA'),
+(12, 2, 'RT9', 'RT9'),
+(13, 2, 'SO ROUPAS', 'SO ROUPAS'),
+(14, 2, 'FORTALEZA DOS BONES', 'FORTALEZA DOS BONES'),
+(20, 2, 'Passaredo', 'Passaredo');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `PRODUTOS`
+--
+
+CREATE TABLE `PRODUTOS` (
+  `ID_PRODUTO` int(11) NOT NULL,
+  `DESCRICAO` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `PRODUTOS`
+--
+
+INSERT INTO `PRODUTOS` (`ID_PRODUTO`, `DESCRICAO`) VALUES
+(1, 'ISHOP'),
+(2, 'FTR++');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `TIPO_PESSOA`
+--
+
+CREATE TABLE `TIPO_PESSOA` (
+  `ID_TIPO` int(11) NOT NULL,
+  `DESCRICAO` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `TIPO_PESSOA`
+--
+
+INSERT INTO `TIPO_PESSOA` (`ID_TIPO`, `DESCRICAO`) VALUES
+(1, 'EMPRESA'),
+(2, 'EMPRESA CLIENTE');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `BANCO`
+--
+ALTER TABLE `BANCO`
+  ADD PRIMARY KEY (`ID_BANCO`),
+  ADD KEY `ID_PRODUTO` (`ID_PRODUTO`),
+  ADD KEY `ID_EMPRESA` (`ID_EMPRESA`);
+
+--
+-- Índices de tabela `PESSOA`
+--
+ALTER TABLE `PESSOA`
+  ADD PRIMARY KEY (`ID_PESSOA`),
+  ADD KEY `ID_TIPO` (`ID_TIPO`);
+
+--
+-- Índices de tabela `PRODUTOS`
+--
+ALTER TABLE `PRODUTOS`
+  ADD PRIMARY KEY (`ID_PRODUTO`);
+
+--
+-- Índices de tabela `TIPO_PESSOA`
+--
+ALTER TABLE `TIPO_PESSOA`
+  ADD PRIMARY KEY (`ID_TIPO`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `BANCO`
+--
+ALTER TABLE `BANCO`
+  MODIFY `ID_BANCO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de tabela `PESSOA`
+--
+ALTER TABLE `PESSOA`
+  MODIFY `ID_PESSOA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de tabela `PRODUTOS`
+--
+ALTER TABLE `PRODUTOS`
+  MODIFY `ID_PRODUTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `TIPO_PESSOA`
+--
+ALTER TABLE `TIPO_PESSOA`
+  MODIFY `ID_TIPO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `BANCO`
+--
+ALTER TABLE `BANCO`
+  ADD CONSTRAINT `BANCO_ibfk_1` FOREIGN KEY (`ID_PRODUTO`) REFERENCES `PRODUTOS` (`ID_PRODUTO`),
+  ADD CONSTRAINT `BANCO_ibfk_2` FOREIGN KEY (`ID_EMPRESA`) REFERENCES `PESSOA` (`ID_PESSOA`);
+
+--
+-- Restrições para tabelas `PESSOA`
+--
+ALTER TABLE `PESSOA`
+  ADD CONSTRAINT `PESSOA_ibfk_1` FOREIGN KEY (`ID_TIPO`) REFERENCES `TIPO_PESSOA` (`ID_TIPO`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
